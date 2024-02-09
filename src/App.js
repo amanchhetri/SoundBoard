@@ -1,11 +1,8 @@
-import './App.css';
+import "./App.css";
+import Sounds from "./components/Sounds";
 
 function App() {
-  return (
-    <div className="App">
-      <h1>Boom Baam!</h1>
-    </div>
-  );
+  return <Sounds />;
 }
 
 export default App;
