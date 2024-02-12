@@ -10,6 +10,7 @@ const Sounds = () => {
   const [sound, setSound] = useState(bubbles);
   //   const [playing, setPlaying] = useState(false);
   const [soundKey, setSoundKey] = useState(0);
+  const [showText, setShowText] = useState(true);
 
   useEffect(() => {
     const circles = [];
@@ -20,6 +21,7 @@ const Sounds = () => {
     const onKeyDown = (event) => {
       if (keyData[event.key]) {
         // setPlaying(true);
+        setShowText(false);
         drawRandomCircle();
         setSound(keyData[event.key].sound);
         setSoundKey((prevKey) => prevKey + 1);
@@ -35,7 +37,7 @@ const Sounds = () => {
         Math.random() * paper.view.size.width,
         Math.random() * paper.view.size.height
       );
-      const circle = new paper.Path.Circle(randomPoint, 300);
+      const circle = new paper.Path.Circle(randomPoint, 400);
       circle.fillColor = new paper.Color(
         Math.random(), // Random red value
         Math.random(), // Random green value
@@ -92,6 +94,11 @@ const Sounds = () => {
 
   return (
     <div className="canvasBox">
+      {showText && (
+        <div className="text">
+          Press any key, A to Z and turn up the speakers
+        </div>
+      )}
       <canvas ref={canvasRef}>
         {/* <ReactHowler
           src={sound}
